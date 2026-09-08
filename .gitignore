@@ -1,4 +1,5 @@
 # Ignore .env files anywhere in the project
+# adding .gitignore 
 .env
 # Ignore node_modules folder anywhere in the project
 node_modules/
