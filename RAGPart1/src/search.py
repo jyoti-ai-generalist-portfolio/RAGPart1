@@ -5,6 +5,7 @@ from langchain_groq import ChatGroq
 
 load_dotenv()
 
+
 class RAGSearch:
     def __init__(self, persist_dir: str = "faiss_store", embedding_model: str = "all-MiniLM-L6-v2", llm_model: str = "openai/gpt-oss-120b"):
         self.vectorstore = FaissVectorStore(persist_dir, embedding_model)
