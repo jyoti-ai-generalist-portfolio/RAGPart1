@@ -1,0 +1,16 @@
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+langchain_groq
+pypdf
+pymupdf
+pdfplumber
+sentence-transformers
+faiss-cpu
+chromadb
+fonttools
+ipywidgets
+jupyter
+typsense
+langchain-huggingface

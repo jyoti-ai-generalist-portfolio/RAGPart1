@@ -1,0 +1,73 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "56e64d36",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Save this as generate_rag_test.py and run it\n",
+    "import os\n",
+    "\n",
+    "def generate_large_ai_text(filename=\"rag_test_ai_essay.txt\", target_pages=1000):\n",
+    "    # A standard page is roughly 250-300 words. Let's assume ~2000 characters per page.\n",
+    "    # We will loop a comprehensive base text to hit your structural target.\n",
+    "    \n",
+    "    base_essay = \"\"\"\n",
+    "    === CHAPTER: THE EVOLUTION AND FUTURE OF ARTIFICIAL INTELLIGENCE ===\n",
+    "    Artificial Intelligence (AI) represents one of the most profound shifts in human technology. \n",
+    "    At its core, RAG (Retrieval-Augmented Generation) systems rely on heavy semantic indexing to extract \n",
+    "    needle-in-a-haystack insights from massive corpora like this exact document.\n",
+    "    \n",
+    "    SECTION 1: THE FOUNDATIONS OF MACHINE LEARNING\n",
+    "    Machine learning focuses on the development of statistical algorithms that can learn from data.\n",
+    "    Deep learning architectures, specifically Transformers using self-attention mechanisms, have \n",
+    "    revolutionized natural language processing. \n",
+    "    \n",
+    "    SECTION 2: VECTOR EMBEDDINGS AND INDEXING IN RAG\n",
+    "    When testing a vector database (like Milvus, Pinecone, Qdrant, or Chroma), documents are split \n",
+    "    into chunks. Each chunk is passed through an embedding model (like text-embedding-3-small) \n",
+    "    to convert textual semantic meaning into high-dimensional vector coordinates.\n",
+    "    \n",
+    "    SECTION 3: STRESS TESTING THE RETRIEVAL LAYER\n",
+    "    Large documents create noise. A robust RAG pipeline must successfully filter out irrelevant chunks \n",
+    "    while ranking the most accurate context at the top using cross-encoders or re-ranking models.\n",
+    "    \"\"\"\n",
+    "    \n",
+    "    # Approx 2000 chars per page * 1000 pages = 2,000,000 characters\n",
+    "    target_chars = target_pages * 2000\n",
+    "    \n",
+    "    print(f\"Generating a {target_pages}-page text file for RAG testing...\")\n",
+    "    \n",
+    "    with open(filename, \"w\", encoding=\"utf-8\") as f:\n",
+    "        current_chars = 0\n",
+    "        page_count = 1\n",
+    "        \n",
+    "        while current_chars < target_chars:\n",
+    "            # Inject a unique 'needle' every 100 pages to test your RAG retrieval accuracy\n",
+    "            if page_count % 100 == 0:\n",
+    "                needle = f\"\\n\\n[SECRET KEY SYSTEM CHECK] Page {page_count} Unique Token: AI-RAG-TEST-999X-{page_count}\\n\\n\"\n",
+    "                f.write(needle)\n",
+    "                current_chars += len(needle)\n",
+    "            \n",
+    "            f.write(base_essay)\n",
+    "            current_chars += len(base_essay)\n",
+    "            page_count = int(current_chars / 2000) + 1\n",
+    "\n",
+    "    file_size_mb = os.path.getsize(filename) / (1024 * 1024)\n",
+    "    print(f\"Success! Created '{filename}' ({file_size_mb:.2f} MB). Ready for ingestion.\")\n",
+    "\n",
+    "if __name__ == \"__main__\":\n",
+    "    generate_large_ai_text()\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
